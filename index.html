@@ -152,11 +152,7 @@
             animation: shine 1.5s infinite;
         }
         
-        @keyframes shine {
-            0% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
+               
         .control-btn:active {
             transform: translateY(2px);
             box-shadow: 0 2px 0 rgba(0,0,0,0.1);
@@ -184,21 +180,25 @@
         
         .students-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
             margin-bottom: 40px;
         }
         
         .student-card {
             background-color: white;
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             position: relative;
             transition: all 0.3s;
-            border: 3px solid var(--light-color);
+            border: 2px solid var(--light-color);
             overflow: hidden;
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
         
         .student-card:hover {
@@ -213,66 +213,31 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 10px;
+            height: 5px;
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
         }
         
-        .student-card:after {
-            content: "";
+        .student-id {
             position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 60px;
-            height: 60px;
-            background-image: radial-gradient(circle, var(--cloud-blue) 20%, transparent 20%),
-                              radial-gradient(circle, var(--cloud-pink) 20%, transparent 20%),
-                              radial-gradient(circle, var(--light-color) 20%, transparent 20%);
-            background-size: 30px 30px;
-            background-position: 0 0, 15px 15px, 30px 30px;
-            opacity: 0.5;
-        }
-        
-        .student-name {
-            font-weight: bold;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+            top: 5px;
+            left: 5px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
             display: flex;
             align-items: center;
-            color: var(--dark-color);
-            cursor: pointer;
-            transition: all 0.3s;
-            position: relative;
-            padding-left: 15px;
-        }
-        
-        .student-name:before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 8px;
-            height: 80%;
-            background-color: var(--primary-color);
-            border-radius: 5px;
-            transition: all 0.3s;
-        }
-        
-        .student-name:hover {
-            color: var(--primary-color);
-            transform: translateX(5px);
-        }
-        
-        .student-name:hover:before {
-            height: 100%;
-            background-color: var(--secondary-color);
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: bold;
         }
         
         .student-icon {
-            font-size: 2.2rem;
-            margin-right: 15px;
-            width: 50px;
-            height: 50px;
+            font-size: 2.5rem;
+            margin: 5px 0;
+            width: 60px;
+            height: 60px;
             background-color: var(--light-color);
             border-radius: 50%;
             display: flex;
@@ -282,36 +247,22 @@
             transition: all 0.3s;
         }
         
-        .student-name:hover .student-icon {
+        .student-name {
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin: 5px 0;
+            color: var(--dark-color);
+            transition: all 0.3s;
+        }
+        
+        .student-card:hover .student-icon {
             transform: scale(1.1) rotate(10deg);
             background-color: var(--accent-color);
             color: white;
         }
         
-        .student-score {
-            font-size: 2.2rem;
-            font-weight: bold;
-            margin: 20px 0;
-            text-align: center;
-            position: relative;
-            display: inline-block;
-            padding: 0 20px;
-        }
-        
-        .student-score:before, .student-score:after {
-            content: "✧";
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
+        .student-card:hover .student-name {
             color: var(--primary-color);
-        }
-        
-        .student-score:before {
-            left: 0;
-        }
-        
-        .student-score:after {
-            right: 0;
         }
         
         .positive-score {
@@ -575,23 +526,7 @@
             margin: 5px;
         }
         
-        .random-display span:before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                to bottom right,
-                rgba(255, 255, 255, 0) 45%,
-                rgba(255, 255, 255, 0.8) 50%,
-                rgba(255, 255, 255, 0) 55%
-            );
-            transform: rotate(30deg);
-            animation: shine 3s infinite;
-        }
-        
+       
         @keyframes shine {
             0% { transform: translateX(-100%) rotate(30deg); }
             100% { transform: translateX(100%) rotate(30deg); }
@@ -606,18 +541,15 @@
 
         .random-count-badge {
             position: absolute;
-            top: -8px;
-            right: -8px;
-            background-color: var(--danger-color);
-            color: white;
+            top: -15px;
+            right: -15px;
+            background-color: transparent;
+            color: var(--danger-color);
             border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
+            font-size: 1.5rem;
             font-weight: bold;
+            z-index: 1;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
         
         .random-controls {
@@ -1015,7 +947,6 @@
             border-radius: 15px;
             font-size: 2rem;
             font-family: inherit;
-            background-color: rgba(255,255,255,0.9);
         }
         
         .timer-separator {
@@ -1331,10 +1262,40 @@
         
         /* 学生卡片折叠样式 */
         .student-card-collapsed {
-            padding: 15px;
+            padding: 5px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            min-height: 40px;
+        }
+        
+        .student-card-collapsed .student-name {
+            font-size: 1rem;
+            margin-bottom: 0;
+            padding-left: 5px;
+            flex: 1;
+        }
+        
+        .student-card-collapsed .student-name:before {
+            width: 4px;
+        }
+        
+        .student-card-collapsed .student-icon {
+            font-size: 1rem;
+            width: 25px;
+            height: 25px;
+            margin-right: 8px;
+        }
+        
+        .student-card-collapsed .student-score {
+            font-size: 1rem;
+            margin: 0;
+            padding: 0 10px;
+        }
+        
+        .student-card-collapsed .student-score:before,
+        .student-card-collapsed .student-score:after {
+            display: none;
         }
         
         .student-card-expanded {
@@ -1349,9 +1310,286 @@
             display: block;
         }
         
+        /* 撤销按钮 */
+        .undo-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--warning-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+            transition: all 0.3s;
+        }
+        
+        .undo-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .undo-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--danger-color);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+        }
+        
+        /* 全屏随机点名样式 */
+        .random-fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .random-fullscreen-display {
+            font-size: 5rem;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            margin: 30px 0;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .random-fullscreen-name {
+            position: relative;
+            margin: 20px;
+            padding: 20px 40px;
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 15px;
+            animation: pulse 2s infinite;
+        }
+        
+        .random-fullscreen-count {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            color: #FFD700;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(0,0,0,0.5);
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .random-fullscreen-controls {
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .random-fullscreen-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .random-fullscreen-close:hover {
+            color: var(--accent-color);
+            transform: rotate(90deg);
+        }
+        
+        /* 排行榜加减分模态框 */
+        .score-reason-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .score-reason-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+            border: 5px solid var(--primary-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .score-reason-title {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .score-reason-select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .score-reason-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+        
+        /* 日期选择器样式 */
+        .date-range-picker {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+        
+        .date-input {
+            padding: 10px;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            font-family: inherit;
+        }
+
+        /* 学生卡片加减分按钮 */
+        .student-score-controls {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        
+        .student-score-btn {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .student-add-btn {
+            background-color: var(--success-color);
+            color: white;
+        }
+        
+        .student-minus-btn {
+            background-color: var(--danger-color);
+            color: white;
+        }
+        
+        .student-points-select {
+            width: 40px;
+            text-align: center;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        /* 部分抽取模态框 */
+        .partial-select-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .partial-select-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            border: 5px solid var(--primary-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .partial-select-title {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .partial-select-list {
+            max-height: 400px;
+            overflow-y: auto;
+            margin: 20px 0;
+            padding: 10px;
+            border: 2px dashed var(--accent-color);
+            border-radius: 10px;
+        }
+        
+        .partial-select-item {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        
+        .partial-select-item:hover {
+            background-color: rgba(155, 89, 182, 0.1);
+        }
+        
+        .partial-select-item input {
+            margin-right: 15px;
+            transform: scale(1.5);
+        }
+        
         @media (max-width: 768px) {
             .students-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
             
             .controls {
@@ -1399,6 +1637,24 @@
             h1 {
                 font-size: 2.2rem;
                 padding: 0 15px 10px;
+            }
+            
+            .random-fullscreen-display {
+                font-size: 3rem;
+            }
+            
+            .random-fullscreen-name {
+                padding: 15px 30px;
+            }
+            
+            .random-fullscreen-count {
+                font-size: 1.5rem;
+                bottom: -25px;
+            }
+            
+            .date-range-picker {
+                flex-direction: column;
+                align-items: stretch;
             }
         }
     </style>
@@ -1460,6 +1716,9 @@
                 </button>
             </div>
             <div class="random-controls">
+                <button class="control-btn" id="partialSelectBtn">
+                    <i class="fas fa-users"></i> 部分抽取
+                </button>
                 <span>抽取人数：</span>
                 <input type="number" class="random-count" id="randomCount" min="1" max="34" value="1">
                 <button class="control-btn random-btn" id="startRandomBtn">
@@ -1474,9 +1733,6 @@
         
         <div class="status-bar" id="statusBar">
             <span>最后更新: <span id="lastUpdated">尚未更新</span></span>
-            <button class="sync-btn" id="syncBtn" title="手动同步数据">
-                <i class="fas fa-sync-alt"></i>
-            </button>
         </div>
     </div>
     
@@ -1528,14 +1784,32 @@
             <h2 class="modal-title">导入数据</h2>
             <div class="file-input-container">
                 <button class="file-input-btn">
-                    <i class="fas fa-file-upload"></i> 选择文件
+                    <i class="fas fa-file-upload"></i> 选择Excel文件
                 </button>
-                <input type="file" class="file-input" id="fileInput" accept=".json,.csv">
+                <input type="file" class="file-input" id="fileInput" accept=".xlsx,.xls">
             </div>
             <div id="fileName" style="margin-top: 10px; text-align: center;"></div>
             <div class="modal-buttons">
                 <button class="control-btn import-btn" id="confirmImportBtn">导入数据</button>
                 <button class="control-btn clear-btn" id="cancelImportBtn">取消</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 数据导出模态框 -->
+    <div class="modal" id="exportModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeExportModal">&times;</span>
+            <h2 class="modal-title">导出数据</h2>
+            <div class="date-range-picker">
+                <label for="startDate">开始日期:</label>
+                <input type="date" id="startDate" class="date-input">
+                <label for="endDate">结束日期:</label>
+                <input type="date" id="endDate" class="date-input">
+            </div>
+            <div class="modal-buttons">
+                <button class="control-btn export-btn" id="confirmExportBtn">导出Excel</button>
+                <button class="control-btn clear-btn" id="cancelExportBtn">取消</button>
             </div>
         </div>
     </div>
@@ -1651,6 +1925,63 @@
         <span id="notificationMessage">操作成功</span>
     </div>
     
+    <!-- 撤销按钮 -->
+    <div class="undo-btn" id="undoBtn" title="撤销上次操作">
+        <i class="fas fa-undo"></i>
+        <span class="undo-badge" id="undoBadge" style="display: none;">0</span>
+    </div>
+    
+    <!-- 全屏随机点名 -->
+    <div class="random-fullscreen" id="randomFullscreen">
+        <div class="random-fullscreen-close" id="closeRandomFullscreen">&times;</div>
+        <div class="random-fullscreen-display" id="randomFullscreenDisplay"></div>
+        <div class="random-fullscreen-controls">
+            <button class="control-btn add-btn" id="fullscreenAddBtn" disabled>
+                <i class="fas fa-plus"></i> 加分
+            </button>
+            <button class="control-btn minus-btn" id="fullscreenMinusBtn" disabled>
+                <i class="fas fa-minus"></i> 减分
+            </button>
+            <button class="control-btn random-btn" id="fullscreenRandomBtn">
+                <i class="fas fa-random"></i> 继续点名
+            </button>
+        </div>
+    </div>
+    
+    <!-- 排行榜加减分理由模态框 -->
+    <div class="score-reason-modal" id="scoreReasonModal">
+        <div class="score-reason-content">
+            <span class="close-btn" id="closeScoreReasonModal">&times;</span>
+            <h2 class="score-reason-title" id="scoreReasonTitle">选择加减分理由</h2>
+            <select class="score-reason-select" id="scoreReasonSelect">
+                <!-- 选项将通过JavaScript动态生成 -->
+            </select>
+            <div class="score-reason-buttons">
+                <button class="control-btn" id="confirmScoreReasonBtn">确认</button>
+                <button class="control-btn clear-btn" id="cancelScoreReasonBtn">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 部分抽取模态框 -->
+    <div class="partial-select-modal" id="partialSelectModal">
+        <div class="partial-select-content">
+            <span class="close-btn" id="closePartialSelectModal">&times;</span>
+            <h2 class="partial-select-title">选择要抽取的学生</h2>
+            <div class="select-all-container">
+                <button class="select-all-btn" id="selectAllPartialBtn">
+                    <i class="fas fa-check-square"></i> 全选
+                </button>
+            </div>
+            <div class="partial-select-list" id="partialSelectList">
+                <!-- 学生列表将通过JavaScript动态生成 -->
+            </div>
+            <div class="modal-buttons">
+                <button class="control-btn" id="confirmPartialSelectBtn">确认选择</button>
+                <button class="control-btn clear-btn" id="cancelPartialSelectBtn">取消</button>
+            </div>
+        </div>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script>
         // 学生数据
@@ -1661,6 +1992,15 @@
             "杨晓卉", "殷晨曦", "张承旭", "张佳越", "张梦轩", "张梦雪", "张清怡", "张政", 
             "周煜宸", "朱睿龙"
         ];
+        
+        // 按姓氏拼音排序
+        students.sort((a, b) => a.localeCompare(b, 'zh-CN'));
+        
+        // 给学生添加学号
+        let studentNumbers = {};
+        students.forEach((student, index) => {
+            studentNumbers[student] = index + 1;
+        });
         
         // 加减分理由
         const reasons = {
@@ -1684,11 +2024,13 @@
                 "迟到",
                 "旷课",
                 "请假",
-                "铃响未回座位",
+                "个人卫生不干净",
                 "铃响未准备书本",
                 "没带书",
-                "上课违纪(轻微)",
-                "上课违纪(严重)",
+                "不认真做课间操",
+                "不认真做眼保操",
+                "上课违纪",
+                "回答问题",
                 "课间违纪",
                 "自习课违纪",
                 "乱写作业",
@@ -1713,7 +2055,6 @@
         let studentData = {};
         let scoreEnabled = false;
         const STORAGE_KEY = 'class_points_system_v3';
-        const SYNC_API_URL = 'https://your-firebase-function-url.com/api/sync'; // 替换为您的服务器API地址
         
         // 计时器变量
         let timerInterval;
@@ -1724,10 +2065,20 @@
         // 随机点名相关变量
         let randomInterval;
         let selectedStudents = [];
+        let currentSelectedStudents = []; // 新增：存储当前抽中的学生
         let todaySelectedCount = {}; // 记录当天被抽中的次数
-        
+        let partialSelection = []; // 部分抽取的学生名单
+       
         // 标题颜色
         let titleColor = '#3498db';
+        
+        // 撤销操作记录
+        let undoStack = [];
+        let undoPointer = -1;
+        
+        // 排行榜加减分相关变量
+        let currentLeaderboardAction = null;
+        let currentLeaderboardStudent = null;
         
         // 显示通知
         function showNotification(message, type = 'success') {
@@ -1752,9 +2103,16 @@
                     studentData = parsedData.studentData || {};
                     students = parsedData.students || students;
                     titleColor = parsedData.titleColor || titleColor;
+                    undoStack = parsedData.undoStack || [];
+                    undoPointer = parsedData.undoPointer || -1;
                     
-                    // 更新标题样式
+                    // 更新标题样式和文本
                     updateTitleStyle();
+                    const title = document.getElementById('mainTitle');
+                    if (parsedData.customTitle) {
+                        title.innerHTML = `<i class="fas fa-star"></i> ${parsedData.customTitle} <i class="fas fa-star"></i>
+                            <button class="edit-title-btn" id="editTitleBtn"><i class="fas fa-pencil-alt"></i></button>`;
+                    }
                     
                     // 初始化当天被抽中次数
                     const today = new Date().toDateString();
@@ -1773,6 +2131,7 @@
                     });
                     
                     updateLastUpdated();
+                    updateUndoBadge();
                     showNotification('本地数据加载成功');
                 } catch (error) {
                     console.error('解析本地数据失败:', error);
@@ -1804,15 +2163,21 @@
                 };
                 todaySelectedCount[student] = 0;
             });
+            undoStack = [];
+            undoPointer = -1;
             saveData();
         }
         
         // 保存数据到本地存储
         function saveData() {
+            const customTitle = document.getElementById('mainTitle').textContent.trim().replace(/★/g, '').trim();
             const dataToSave = {
                 studentData,
                 students,
                 titleColor,
+                undoStack,
+                undoPointer,
+                customTitle,
                 lastUpdated: new Date().toISOString()
             };
             localStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave));
@@ -1833,64 +2198,86 @@
             title.style.background = titleColor;
         }
         
-        // 同步数据到服务器
-        async function syncData() {
-            const syncBtn = document.getElementById('syncBtn');
-            const icon = syncBtn.querySelector('i');
-            const originalIcon = icon.className;
+        // 更新撤销按钮状态
+        function updateUndoBadge() {
+            const undoBadge = document.getElementById('undoBadge');
+            const undoCount = undoStack.length - (undoPointer + 1);
             
-            // 显示加载状态
-            icon.className = 'fas fa-spinner loader';
-            syncBtn.disabled = true;
-            
-            try {
-                // 这里应该是您的同步API调用
-                // 示例代码，实际使用时需要替换为真实的API调用
-                /*
-                const response = await fetch(SYNC_API_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(studentData)
-                });
-                
-                if (!response.ok) {
-                    throw new Error('同步失败');
-                }
-                
-                const data = await response.json();
-                */
-                
-                // 模拟API调用延迟
-                await new Promise(resolve => setTimeout(resolve, 1000));
-                
-                // 模拟成功响应
-                // 实际使用时应该使用从服务器返回的数据
-                // if (data.success) {
-                //     studentData = data.data;
-                //     saveData();
-                // }
-                
-                showNotification('数据同步成功');
-            } catch (error) {
-                console.error('同步错误:', error);
-                showNotification('同步失败: ' + error.message, 'error');
-            } finally {
-                // 恢复按钮状态
-                icon.className = originalIcon;
-                syncBtn.disabled = false;
+            if (undoCount > 0) {
+                undoBadge.textContent = undoCount;
+                undoBadge.style.display = 'flex';
+            } else {
+                undoBadge.style.display = 'none';
             }
         }
         
-        // 渲染学生卡片
+        // 添加操作到撤销栈
+        function addToUndoStack(action) {
+            // 如果撤销指针不在栈的末尾，则丢弃之后的操作
+            if (undoPointer < undoStack.length - 1) {
+                undoStack = undoStack.slice(0, undoPointer + 1);
+            }
+            
+            undoStack.push(action);
+            undoPointer = undoStack.length - 1;
+            updateUndoBadge();
+            saveData();
+        }
+        
+        // 撤销操作
+        function undoAction() {
+            if (undoPointer >= 0) {
+                const action = undoStack[undoPointer];
+                
+                switch(action.type) {
+                    case 'addPoints':
+                        // 撤销加分操作
+                        studentData[action.name].score -= action.points;
+                        // 移除对应的活动记录
+                        studentData[action.name].activities = 
+                            studentData[action.name].activities.filter(a => 
+                                a.date !== action.date || 
+                                a.points !== action.points || 
+                                a.reason !== action.reason
+                            );
+                        break;
+                        
+                    case 'deductPoints':
+                        // 撤销减分操作
+                        studentData[action.name].score += action.points;
+                        // 移除对应的扣分记录
+                        studentData[action.name].deductions = 
+                            studentData[action.name].deductions.filter(d => 
+                                d.date !== action.date || 
+                                d.points !== action.points || 
+                                d.reason !== action.reason
+                            );
+                        break;
+                }
+                
+                undoPointer--;
+                updateUndoBadge();
+                saveData();
+                renderStudents();
+                renderLeaderboard();
+                
+                showNotification(`已撤销: ${action.name} ${action.type === 'addPoints' ? '+' : '-'}${action.points}分`, 'warning');
+            } else {
+                showNotification('没有可撤销的操作', 'error');
+            }
+        }
+        
         function renderStudents() {
             const grid = document.getElementById('studentsGrid');
             grid.innerHTML = '';
             
-            students.forEach(student => {
-                const data = studentData[student] || { score: 0, deductions: [], activities: [] };
-                const totalDeduction = data.deductions.reduce((sum, item) => sum + item.points, 0);
+            // 按学号排序
+            const sortedStudents = [...students].sort((a, b) => {
+                return studentNumbers[a] - studentNumbers[b]; // 按学号升序排列
+            });
+            
+            sortedStudents.forEach(student => {
+                const data = studentData[student] || { score: 0, deductions: [], activities: [], icon: '👦' };
                 const scoreClass = data.score >= 0 ? 'positive-score' : 'negative-score';
                 
                 const card = document.createElement('div');
@@ -1898,112 +2285,50 @@
                 card.dataset.name = student;
                 
                 card.innerHTML = `
-                    <div class="student-card-collapsed">
-                        <div class="student-name" data-name="${student}">
-                            <span class="student-icon">${data.icon || '👦'}</span>
-                            <span>${student}</span>
-                        </div>
-                        <div class="student-score ${scoreClass}">${data.score}分</div>
-                    </div>
-                    <div class="student-card-expanded">
-                        <div class="student-name" data-name="${student}">
-                            <span class="student-icon">${data.icon || '👦'}</span>
-                            <span>${student}</span>
-                        </div>
-                        <div class="student-score ${scoreClass}">${data.score}分</div>
-                        <div class="total-deduction">扣分总计: ${totalDeduction}分</div>
-                        <select class="reason-select add-reason" ${scoreEnabled ? '' : 'disabled'}>
-                            <option value="">选择加分理由</option>
-                            ${reasons["加分"].map(reason => `<option value="${reason}">${reason}</option>`).join('')}
+                    <div class="student-id">${studentNumbers[student]}</div>
+                    <div class="student-icon">${data.icon || '👦'}</div>
+                    <div class="student-name">${student}</div>
+                    <div class="student-score-controls">
+                        <select class="student-points-select" data-name="${student}">
+                            <option value="1">1分</option>
+                            <option value="2">2分</option>
+                            <option value="3">3分</option>
+                            <option value="4">4分</option>
+                            <option value="5">5分</option>
                         </select>
-                        <div class="score-controls">
-                            <button class="score-btn add-btn" data-name="${student}" ${scoreEnabled ? '' : 'disabled'}>
-                                <i class="fas fa-plus"></i> 加分
-                            </button>
-                            <input type="number" class="score-input add-score" value="1" min="0.5" max="5" step="0.5" 
-                                   data-name="${student}" ${scoreEnabled ? '' : 'disabled'}>
-                        </div>
-                        <select class="reason-select minus-reason" ${scoreEnabled ? '' : 'disabled'}>
-                            <option value="">选择减分理由</option>
-                            ${reasons["减分"].map(reason => `<option value="${reason}">${reason}</option>`).join('')}
-                        </select>
-                        <div class="score-controls">
-                            <button class="score-btn minus-btn" data-name="${student}" ${scoreEnabled ? '' : 'disabled'}>
-                                <i class="fas fa-minus"></i> 减分
-                            </button>
-                            <input type="number" class="score-input minus-score" value="1" min="0.5" max="5" step="0.5" 
-                                   data-name="${student}" ${scoreEnabled ? '' : 'disabled'}>
-                        </div>
+                        <button class="student-score-btn student-add-btn" data-name="${student}" ${scoreEnabled ? '' : 'disabled'}>
+                            <i class="fas fa-plus"></i> 加
+                        </button>
+                        <button class="student-score-btn student-minus-btn" data-name="${student}" ${scoreEnabled ? '' : 'disabled'}>
+                            <i class="fas fa-minus"></i> 减
+                        </button>
                     </div>
                 `;
                 
                 grid.appendChild(card);
-            });
-            
-            // 添加卡片点击事件
-            document.querySelectorAll('.student-card').forEach(card => {
+                
+                // 添加点击事件查看详情
                 card.addEventListener('click', function(e) {
-                    // 如果点击的是按钮或输入框，不触发折叠/展开
-                    if (e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') {
-                        return;
+                    // 如果点击的是加减分按钮，则不触发详情查看
+                    if (!e.target.classList.contains('student-score-btn') && 
+                        !e.target.classList.contains('student-points-select')) {
+                        showStudentDetails(student);
                     }
-                    this.classList.toggle('active');
                 });
-            });
-            
-            // 添加事件监听器
-            document.querySelectorAll('.add-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const name = this.getAttribute('data-name');
-                    const card = document.querySelector(`.student-card[data-name="${name}"]`);
-                    const input = card.querySelector('.add-score');
-                    const reasonSelect = card.querySelector('.add-reason');
-                    const reason = reasonSelect.value;
-                    
-                    if (!reason) {
-                        showNotification('请选择加分理由', 'error');
-                        return;
-                    }
-                    
-                    const points = parseFloat(input.value);
-                    if (isNaN(points)) {
-                        showNotification('请输入有效的分数', 'error');
-                        return;
-                    }
-                    
-                    addPoints(name, points, reason);
+                
+                // 添加加减分按钮事件
+                card.querySelector('.student-add-btn').addEventListener('click', function() {
+                    const points = parseInt(card.querySelector('.student-points-select').value) || 1;
+                    currentLeaderboardAction = 'add';
+                    currentLeaderboardStudent = student;
+                    showScoreReasonModal('加分');
                 });
-            });
-            
-            document.querySelectorAll('.minus-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const name = this.getAttribute('data-name');
-                    const card = document.querySelector(`.student-card[data-name="${name}"]`);
-                    const input = card.querySelector('.minus-score');
-                    const reasonSelect = card.querySelector('.minus-reason');
-                    const reason = reasonSelect.value;
-                    
-                    if (!reason) {
-                        showNotification('请选择减分理由', 'error');
-                        return;
-                    }
-                    
-                    const points = parseFloat(input.value);
-                    if (isNaN(points)) {
-                        showNotification('请输入有效的分数', 'error');
-                        return;
-                    }
-                    
-                    deductPoints(name, points, reason);
-                });
-            });
-            
-            // 添加点击学生姓名查看详情的事件
-            document.querySelectorAll('.student-name').forEach(nameEl => {
-                nameEl.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const name = this.getAttribute('data-name') || this.closest('.student-name').getAttribute('data-name');
-                    showStudentDetails(name);
+                
+                card.querySelector('.student-minus-btn').addEventListener('click', function() {
+                    const points = parseInt(card.querySelector('.student-points-select').value) || 1;
+                    currentLeaderboardAction = 'deduct';
+                    currentLeaderboardStudent = student;
+                    showScoreReasonModal('减分');
                 });
             });
         }
@@ -2049,6 +2374,8 @@
                     medalIcon = '<span class="medal">🥉</span>';
                 }
                 
+                const scoreClass = student.score >= 0 ? 'positive-score' : 'negative-score';
+                
                 item.innerHTML = `
                     <div class="leaderboard-rank">${index + 1}</div>
                     ${medalIcon}
@@ -2056,18 +2383,61 @@
                         <span style="margin-right: 10px;">${student.icon}</span>
                         ${student.name}
                     </div>
-                    <div class="leaderboard-score ${student.score >= 0 ? 'positive-score' : 'negative-score'}">
+                    <div class="leaderboard-score ${scoreClass}">
                         ${student.score}分
                     </div>
                 `;
                 
                 // 点击跳转到学生详情
-                item.addEventListener('click', () => {
+                item.addEventListener('click', function() {
                     showStudentDetails(student.name);
                 });
                 
                 leaderboardList.appendChild(item);
             });
+        }
+        
+        // 显示加减分理由模态框
+        function showScoreReasonModal(type) {
+            const modal = document.getElementById('scoreReasonModal');
+            const select = document.getElementById('scoreReasonSelect');
+            const title = document.getElementById('scoreReasonTitle');
+            
+            title.textContent = `选择${type}理由`;
+            select.innerHTML = '';
+            
+            const reasonsList = reasons[type] || [];
+            reasonsList.forEach(reason => {
+                const option = document.createElement('option');
+                option.value = reason;
+                option.textContent = reason;
+                select.appendChild(option);
+            });
+            
+            modal.style.display = 'flex';
+        }
+        
+        // 处理排行榜加减分
+        function handleLeaderboardScore() {
+            if (!currentLeaderboardStudent || !currentLeaderboardAction) return;
+            
+            const reason = document.getElementById('scoreReasonSelect').value;
+            if (!reason) {
+                showNotification('请选择理由', 'error');
+                return;
+            }
+            
+            // 获取当前学生卡片上的选择的分值
+            const studentCard = document.querySelector(`.student-card[data-name="${currentLeaderboardStudent}"]`);
+            const points = parseInt(studentCard.querySelector('.student-points-select').value) || 1;
+            
+            if (currentLeaderboardAction === 'add') {
+                addPoints(currentLeaderboardStudent, points, reason);
+            } else {
+                deductPoints(currentLeaderboardStudent, points, reason);
+            }
+            
+            document.getElementById('scoreReasonModal').style.display = 'none';
         }
         
         // 显示学生详情
@@ -2221,7 +2591,7 @@
             document.getElementById('importModal').style.display = 'flex';
         }
         
-        // 处理文件导入
+        // 增强版Excel导入处理函数
         function handleFileImport() {
             const fileInput = document.getElementById('fileInput');
             const file = fileInput.files[0];
@@ -2238,33 +2608,109 @@
             
             reader.onload = function(e) {
                 try {
-                    const importedData = JSON.parse(e.target.result);
+                    const data = new Uint8Array(e.target.result);
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+                    const jsonData = XLSX.utils.sheet_to_json(firstSheet);
                     
-                    // 验证导入的数据结构
-                    if (!importedData || typeof importedData !== 'object') {
-                        throw new Error('无效的数据格式');
+                    if (jsonData.length === 0) {
+                        throw new Error('Excel文件中没有数据');
                     }
                     
-                    // 检查是否包含必要字段
-                    let isValid = true;
-                    students.forEach(student => {
-                        if (!importedData[student]) {
-                            isValid = false;
+                    // 检查Excel列名是否符合要求
+                    const expectedColumns = ['学号', '姓名', '总分', '扣分总计', '活动加分', '最后更新时间'];
+                    const actualColumns = Object.keys(jsonData[0]);
+                    
+                    // 检查是否包含必要列
+                    if (!actualColumns.includes('姓名') || !actualColumns.includes('总分')) {
+                        throw new Error('Excel文件格式不正确，缺少必要列');
+                    }
+                    
+                    const importedData = {};
+                    const importedStudents = [];
+                    
+                    jsonData.forEach(row => {
+                        // 兼容不同列名的情况
+                        const name = row['姓名']?.toString().trim() || 
+                                    row['学生姓名']?.toString().trim() || 
+                                    row['名字']?.toString().trim();
+                        
+                        if (name) {
+                            importedStudents.push(name);
+                            
+                            // 兼容不同列名的分数
+                            const score = parseFloat(row['总分']) || 
+                                         parseFloat(row['积分']) || 
+                                         parseFloat(row['分数']) || 
+                                         0;
+                            
+                            importedData[name] = {
+                                score: score,
+                                deductions: [],
+                                activities: [],
+                                icon: getRandomEmoji(),
+                                lastUpdated: new Date().toISOString()
+                            };
+                            
+                            // 解析扣分和加分记录（如果有）
+                            if (row['扣分明细']) {
+                                const deductions = row['扣分明细'].toString().split(';').filter(s => s.trim());
+                                deductions.forEach(deduction => {
+                                    // 兼容不同格式的扣分记录
+                                    const match = deduction.match(/(.+?)\((\d+)分 (.+)\)/) || 
+                                                 deduction.match(/(.+?):(\d+)分 (.+)/) || 
+                                                 deduction.match(/(.+?)\s(\d+)分\s(.+)/);
+                                    if (match) {
+                                        importedData[name].deductions.push({
+                                            reason: match[1].trim(),
+                                            points: parseInt(match[2]),
+                                            date: new Date(match[3].trim()).toISOString()
+                                        });
+                                    }
+                                });
+                            }
+                            
+                            if (row['活动明细']) {
+                                const activities = row['活动明细'].toString().split(';').filter(s => s.trim());
+                                activities.forEach(activity => {
+                                    // 兼容不同格式的活动记录
+                                    const match = activity.match(/(.+?)\((\d+)分 (.+)\)/) || 
+                                                 activity.match(/(.+?):(\d+)分 (.+)/) || 
+                                                 activity.match(/(.+?)\s(\d+)分\s(.+)/);
+                                    if (match) {
+                                        importedData[name].activities.push({
+                                            type: match[1].trim(),
+                                            points: parseInt(match[2]),
+                                            reason: 'Excel导入',
+                                            date: new Date(match[3].trim()).toISOString()
+                                        });
+                                    }
+                                });
+                            }
                         }
                     });
                     
-                    if (!isValid) {
-                        throw new Error('数据不完整或格式不正确');
+                    // 验证导入的数据结构
+                    if (!importedData || Object.keys(importedData).length === 0) {
+                        throw new Error('Excel文件中没有有效的学生数据');
                     }
                     
                     // 确认导入
-                    if (confirm('确定要导入数据吗？这将覆盖当前所有数据！')) {
+                    if (confirm(`确定要导入数据吗？这将覆盖当前所有数据！\n共找到${Object.keys(importedData).length}名学生数据`)) {
                         studentData = importedData;
+                        students = importedStudents;
+                        
+                        // 重新排序并分配学号
+                        students.sort((a, b) => a.localeCompare(b, 'zh-CN'));
+                        students.forEach((student, index) => {
+                            studentNumbers[student] = index + 1;
+                        });
+                        
                         saveData();
                         renderStudents();
                         document.getElementById('importModal').style.display = 'none';
                         document.getElementById('fileName').textContent = '';
-                        showNotification('数据导入成功');
+                        showNotification(`成功导入${students.length}名学生数据`);
                     }
                 } catch (error) {
                     console.error('导入错误:', error);
@@ -2276,7 +2722,7 @@
                 showNotification('读取文件失败', 'error');
             };
             
-            reader.readAsText(file);
+            reader.readAsArrayBuffer(file);
         }
         
         // 从Excel导入学生
@@ -2305,7 +2751,7 @@
                         // 假设Excel第一列是学生姓名
                         const newStudents = jsonData.map(row => {
                             const firstKey = Object.keys(row)[0];
-                            return row[firstKey].toString().trim();
+                            return row[firstKey]?.toString().trim();
                         }).filter(name => name);
                         
                         if (newStudents.length === 0) {
@@ -2328,6 +2774,12 @@
                                 }
                             });
                             
+                            // 重新排序并分配学号
+                            students.sort((a, b) => a.localeCompare(b, 'zh-CN'));
+                            students.forEach((student, index) => {
+                                studentNumbers[student] = index + 1;
+                            });
+                            
                             saveData();
                             renderStudents();
                             renderStudentManagement();
@@ -2345,30 +2797,32 @@
         }
         
         // 加分
-        function addPoints(name, points, reason, activityType) {
+        function addPoints(name, points, reason, activityType = "加分") {
             if (!studentData[name]) {
                 studentData[name] = { score: 0, deductions: [], activities: [], icon: getRandomEmoji() };
             }
             
             studentData[name].score += points;
             
-            if (activityType) {
-                studentData[name].activities.push({
-                    type: activityType,
-                    points: points,
-                    date: new Date().toISOString(),
-                    reason: reason
-                });
-            } else {
-                studentData[name].activities.push({
-                    type: "加分",
-                    points: points,
-                    date: new Date().toISOString(),
-                    reason: reason
-                });
-            }
+            const activity = {
+                type: activityType,
+                points: points,
+                date: new Date().toISOString(),
+                reason: reason
+            };
             
+            studentData[name].activities.push(activity);
             studentData[name].lastUpdated = new Date().toISOString();
+            
+            // 添加到撤销栈
+            addToUndoStack({
+                type: 'addPoints',
+                name: name,
+                points: points,
+                reason: reason,
+                date: activity.date
+            });
+            
             saveData();
             renderStudents();
             
@@ -2384,12 +2838,25 @@
             }
             
             studentData[name].score -= points;
-            studentData[name].deductions.push({
+            
+            const deduction = {
                 reason,
                 points,
                 date: new Date().toISOString()
-            });
+            };
+            
+            studentData[name].deductions.push(deduction);
             studentData[name].lastUpdated = new Date().toISOString();
+            
+            // 添加到撤销栈
+            addToUndoStack({
+                type: 'deductPoints',
+                name: name,
+                points: points,
+                reason: reason,
+                date: deduction.date
+            });
+            
             saveData();
             renderStudents();
             
@@ -2447,6 +2914,8 @@
                 // 启用随机点名中的加减分按钮
                 document.getElementById('quickAddBtn').disabled = false;
                 document.getElementById('quickMinusBtn').disabled = false;
+                document.getElementById('fullscreenAddBtn').disabled = false;
+                document.getElementById('fullscreenMinusBtn').disabled = false;
                 
                 showNotification('加减分功能已启用');
             } else {
@@ -2457,6 +2926,49 @@
         // 随机点名功能
         document.getElementById('randomBtn').addEventListener('click', function() {
             document.getElementById('randomContainer').style.display = 'block';
+        });
+        
+        // 部分抽取功能
+        document.getElementById('partialSelectBtn').addEventListener('click', function() {
+            const modal = document.getElementById('partialSelectModal');
+            const list = document.getElementById('partialSelectList');
+            list.innerHTML = '';
+            
+            students.forEach(student => {
+                const item = document.createElement('div');
+                item.className = 'partial-select-item';
+                item.innerHTML = `
+                    <input type="checkbox" id="partial-${student}" name="partialStudents" value="${student}" checked>
+                    <label for="partial-${student}">${studentNumbers[student]}. ${student}</label>
+                `;
+                list.appendChild(item);
+            });
+            
+            modal.style.display = 'flex';
+        });
+        
+        // 全选部分抽取学生
+        document.getElementById('selectAllPartialBtn').addEventListener('click', function() {
+            const checkboxes = document.querySelectorAll('#partialSelectList input[type="checkbox"]');
+            const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+            
+            checkboxes.forEach(cb => {
+                cb.checked = !allChecked;
+            });
+        });
+        
+        // 确认部分抽取选择
+        document.getElementById('confirmPartialSelectBtn').addEventListener('click', function() {
+            const checkboxes = document.querySelectorAll('#partialSelectList input[type="checkbox"]:checked');
+            partialSelection = Array.from(checkboxes).map(cb => cb.value);
+            
+            if (partialSelection.length === 0) {
+                showNotification('请至少选择一名学生', 'error');
+                return;
+            }
+            
+            document.getElementById('partialSelectModal').style.display = 'none';
+            showNotification(`已选择${partialSelection.length}名学生进行抽取`);
         });
         
         document.getElementById('startRandomBtn').addEventListener('click', function() {
@@ -2470,26 +2982,40 @@
             randomDisplay.classList.remove('selected');
             randomDisplay.innerHTML = '';
             
+            // 显示全屏随机点名
+            const fullscreenDisplay = document.getElementById('randomFullscreenDisplay');
+            fullscreenDisplay.innerHTML = '';
+            document.getElementById('randomFullscreen').style.display = 'flex';
+            
+            // 确定要抽取的学生池
+            const availablePool = partialSelection.length > 0 ? 
+                partialSelection.filter(s => !selectedStudents.includes(s)) : 
+                students.filter(s => !selectedStudents.includes(s));
+            
             // 开始随机滚动
             randomInterval = setInterval(() => {
-                const availableStudents = students.filter(s => !selectedStudents.includes(s));
-                if (availableStudents.length === 0) {
+                if (availablePool.length === 0) {
                     clearInterval(randomInterval);
                     return;
                 }
                 
-                const randomIndex = Math.floor(Math.random() * availableStudents.length);
-                randomDisplay.innerHTML = `<span>${availableStudents[randomIndex]}</span>`;
+                const randomIndex = Math.floor(Math.random() * availablePool.length);
+                const name = availablePool[randomIndex];
+                randomDisplay.innerHTML = `<span>${name}</span>`;
+                fullscreenDisplay.innerHTML = `<div class="random-fullscreen-name">${name}</div>`;
             }, 100);
             
             // 1秒后自动停止
             setTimeout(() => {
                 if (randomInterval) clearInterval(randomInterval);
                 
-                const availableStudents = students.filter(s => !selectedStudents.includes(s));
+                const availableStudents = partialSelection.length > 0 ? 
+                    partialSelection.filter(s => !selectedStudents.includes(s)) : 
+                    students.filter(s => !selectedStudents.includes(s));
                 
                 if (availableStudents.length === 0) {
                     randomDisplay.innerHTML = '<span>所有学生已被抽取</span>';
+                    fullscreenDisplay.innerHTML = '<div class="random-fullscreen-name">所有学生已被抽取</div>';
                     return;
                 }
                 
@@ -2506,6 +3032,7 @@
                 }
                 
                 selectedStudents = [...selectedStudents, ...newSelected];
+                currentSelectedStudents = [...newSelected]; // 存储当前抽中的学生
                 
                 // 显示被抽中的学生及其被抽中次数
                 randomDisplay.innerHTML = newSelected.map(name => {
@@ -2522,6 +3049,16 @@
                                     <i class="fas fa-minus"></i> 减分
                                 </button>
                             </div>
+                        </div>
+                    `;
+                }).join('');
+                
+                fullscreenDisplay.innerHTML = newSelected.map(name => {
+                    const count = todaySelectedCount[name] || 0;
+                    return `
+                        <div class="random-fullscreen-name">
+                            ${name}
+                            ${count > 0 ? `<div class="random-fullscreen-count">${count}次</div>` : ''}
                         </div>
                     `;
                 }).join('');
@@ -2557,11 +3094,136 @@
                     speak(`请${names}${newSelected.length}位同学${activity}`);
                     showNotification(`抽到: ${names}`);
                 }
-            }, 1000); // 修改为1秒后停止
+            }, 1000);
         });
         
-        // 增强数据导出功能
+        // 全屏继续点名
+        document.getElementById('fullscreenRandomBtn').addEventListener('click', function() {
+            const count = parseInt(document.getElementById('randomCount').value) || 1;
+            
+            // 清除之前的间隔
+            if (randomInterval) clearInterval(randomInterval);
+            
+            const fullscreenDisplay = document.getElementById('randomFullscreenDisplay');
+            fullscreenDisplay.innerHTML = '';
+            
+            // 开始随机滚动
+            randomInterval = setInterval(() => {
+                const availableStudents = students.filter(s => !selectedStudents.includes(s));
+                if (availableStudents.length === 0) {
+                    clearInterval(randomInterval);
+                    return;
+                }
+                
+                const randomIndex = Math.floor(Math.random() * availableStudents.length);
+                const name = availableStudents[randomIndex];
+                fullscreenDisplay.innerHTML = `<div class="random-fullscreen-name">${name}</div>`;
+            }, 100);
+            
+            // 1秒后自动停止
+            setTimeout(() => {
+                if (randomInterval) clearInterval(randomInterval);
+                
+                const availableStudents = students.filter(s => !selectedStudents.includes(s));
+                
+                if (availableStudents.length === 0) {
+                    fullscreenDisplay.innerHTML = '<div class="random-fullscreen-name">所有学生已被抽取</div>';
+                    return;
+                }
+                
+                // 随机选择指定数量的学生
+                const newSelected = [];
+                for (let i = 0; i < Math.min(count, availableStudents.length); i++) {
+                    const randomIndex = Math.floor(Math.random() * availableStudents.length);
+                    const selectedName = availableStudents[randomIndex];
+                    newSelected.push(selectedName);
+                    availableStudents.splice(randomIndex, 1);
+                    
+                    // 更新当天被抽中次数
+                    todaySelectedCount[selectedName] = (todaySelectedCount[selectedName] || 0) + 1;
+                }
+                
+                selectedStudents = [...selectedStudents, ...newSelected];
+                currentSelectedStudents = [...newSelected]; // 存储当前抽中的学生
+                
+                // 显示被抽中的学生及其被抽中次数
+                fullscreenDisplay.innerHTML = newSelected.map(name => {
+                    const count = todaySelectedCount[name] || 0;
+                    return `
+                        <div class="random-fullscreen-name">
+                            ${name}
+                            ${count > 0 ? `<div class="random-fullscreen-count">${count}次</div>` : ''}
+                        </div>
+                    `;
+                }).join('');
+                
+                // 语音播报
+                const activity = document.getElementById('activitySelect').value;
+                if (newSelected.length === 1) {
+                    speak(`请${newSelected[0]}同学${activity}`);
+                    showNotification(`抽到: ${newSelected[0]}`);
+                } else {
+                    const names = newSelected.join('、');
+                    speak(`请${names}${newSelected.length}位同学${activity}`);
+                    showNotification(`抽到: ${names}`);
+                }
+            }, 1000);
+        });
+        
+        // 关闭全屏随机点名
+        document.getElementById('closeRandomFullscreen').addEventListener('click', function() {
+            document.getElementById('randomFullscreen').style.display = 'none';
+        });
+        
+        // 全屏随机点名加减分按钮
+        document.getElementById('fullscreenAddBtn').addEventListener('click', function() {
+            const activity = document.getElementById('activitySelect').value;
+            const points = parseInt(document.getElementById('customScore').value) || 1;
+            
+            // 对当前抽中的学生加分
+            currentSelectedStudents.forEach(name => {
+                addPoints(name, points, `课堂活动：${activity}`, activity);
+            });
+        });
+
+        document.getElementById('fullscreenMinusBtn').addEventListener('click', function() {
+            const activity = document.getElementById('activitySelect').value;
+            const points = parseInt(document.getElementById('customScore').value) || 1;
+            
+            // 对当前抽中的学生减分
+            currentSelectedStudents.forEach(name => {
+                deductPoints(name, points, `课堂活动：${activity}`);
+            });
+        });
+
+        // 导出数据功能
         document.getElementById('exportBtn').addEventListener('click', function() {
+            // 设置默认日期为今天
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('startDate').value = today;
+            document.getElementById('endDate').value = today;
+            document.getElementById('exportModal').style.display = 'flex';
+        });
+        
+        // 处理数据导出为Excel
+        document.getElementById('confirmExportBtn').addEventListener('click', function() {
+            const startDate = document.getElementById('startDate').value;
+            const endDate = document.getElementById('endDate').value;
+            
+            if (!startDate || !endDate) {
+                showNotification('请选择日期范围', 'error');
+                return;
+            }
+            
+            const start = new Date(startDate);
+            const end = new Date(endDate);
+            end.setHours(23, 59, 59, 999); // 设置为当天结束时间
+            
+            if (start > end) {
+                showNotification('开始日期不能晚于结束日期', 'error');
+                return;
+            }
+            
             const sorted = Object.keys(studentData)
                 .filter(key => students.includes(key))
                 .map(name => ({ 
@@ -2572,32 +3234,63 @@
                 }))
                 .sort((a, b) => b.score - a.score);
             
-            // 创建增强版CSV
-            let csvContent = "姓名,总分,扣分总计,活动加分,最后更新时间,扣分明细,活动明细\n";
-            
-            sorted.forEach(student => {
-                const totalDeduction = student.deductions.reduce((sum, item) => sum + item.points, 0);
-                const totalActivity = student.activities.reduce((sum, item) => sum + item.points, 0);
-                const deductions = student.deductions
+            // 准备Excel数据
+            const excelData = sorted.map(student => {
+                // 筛选指定日期范围内的记录
+                const filteredDeductions = student.deductions.filter(d => {
+                    const date = new Date(d.date);
+                    return date >= start && date <= end;
+                });
+                
+                const filteredActivities = student.activities.filter(a => {
+                    const date = new Date(a.date);
+                    return date >= start && date <= end;
+                });
+                
+                const totalDeduction = filteredDeductions.reduce((sum, item) => sum + item.points, 0);
+                const totalActivity = filteredActivities.reduce((sum, item) => sum + item.points, 0);
+                const deductions = filteredDeductions
                     .map(d => `${d.reason}(${d.points}分 ${new Date(d.date).toLocaleDateString()})`).join('; ');
-                const activities = student.activities
+                const activities = filteredActivities
                     .map(a => `${a.type}(${a.points}分 ${new Date(a.date).toLocaleDateString()})`).join('; ');
                 
-                csvContent += `${student.name},${student.score},${totalDeduction},${totalActivity},` +
-                    `${new Date(studentData[student.name].lastUpdated).toLocaleString()},"${deductions}","${activities}"\n`;
+                return {
+                    '学号': studentNumbers[student.name],
+                    '姓名': student.name,
+                    '总分': student.score,
+                    '扣分总计': totalDeduction,
+                    '活动加分': totalActivity,
+                    '最后更新时间': new Date(studentData[student.name].lastUpdated).toLocaleString(),
+                    '扣分明细': deductions,
+                    '活动明细': activities
+                };
             });
             
-            // 创建下载链接
-            const blob = new Blob(["\uFEFF" + csvContent], { type: 'text/csv;charset=utf-8;' });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.setAttribute('href', url);
-            link.setAttribute('download', `班级积分_${new Date().toISOString().split('T')[0]}.csv`);
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            // 创建工作簿
+            const wb = XLSX.utils.book_new();
+            const ws = XLSX.utils.json_to_sheet(excelData);
             
-            showNotification('数据导出成功');
+            // 设置列宽
+            ws['!cols'] = [
+                { wch: 8 },  // 学号
+                { wch: 10 }, // 姓名
+                { wch: 8 },  // 总分
+                { wch: 10 }, // 扣分总计
+                { wch: 10 }, // 活动加分
+                { wch: 20 }, // 最后更新时间
+                { wch: 40 }, // 扣分明细
+                { wch: 40 }  // 活动明细
+            ];
+            
+            // 添加工作表到工作簿
+            XLSX.utils.book_append_sheet(wb, ws, "班级积分");
+            
+            // 生成Excel文件并下载
+            const fileName = `班级积分_${startDate}_至_${endDate}.xlsx`;
+            XLSX.writeFile(wb, fileName);
+            
+            document.getElementById('exportModal').style.display = 'none';
+            showNotification('Excel文件导出成功');
         });
         
         // 清除数据功能
@@ -2639,8 +3332,16 @@
             document.getElementById('fileName').textContent = '';
         });
         
+        document.getElementById('closeExportModal').addEventListener('click', function() {
+            document.getElementById('exportModal').style.display = 'none';
+        });
+        
         document.getElementById('closeDetailsModal').addEventListener('click', function() {
             document.getElementById('studentDetailsModal').style.display = 'none';
+        });
+        
+        document.getElementById('closeScoreReasonModal').addEventListener('click', function() {
+            document.getElementById('scoreReasonModal').style.display = 'none';
         });
         
         document.getElementById('cancelClearBtn').addEventListener('click', function() {
@@ -2659,11 +3360,22 @@
             document.getElementById('fileName').textContent = '';
         });
         
+        document.getElementById('cancelExportBtn').addEventListener('click', function() {
+            document.getElementById('exportModal').style.display = 'none';
+        });
+        
+        document.getElementById('cancelScoreReasonBtn').addEventListener('click', function() {
+            document.getElementById('scoreReasonModal').style.display = 'none';
+        });
+        
         // 确认启用加减分
         document.getElementById('confirmEnableBtn').addEventListener('click', confirmEnableScore);
         
         // 确认导入数据
         document.getElementById('confirmImportBtn').addEventListener('click', handleFileImport);
+        
+        // 确认排行榜加减分
+        document.getElementById('confirmScoreReasonBtn').addEventListener('click', handleLeaderboardScore);
         
         // 点击模态框外部关闭
         window.addEventListener('click', function(event) {
@@ -2683,6 +3395,9 @@
                 document.getElementById('fileInput').value = '';
                 document.getElementById('fileName').textContent = '';
             }
+            if (event.target === document.getElementById('exportModal')) {
+                document.getElementById('exportModal').style.display = 'none';
+            }
             if (event.target === document.getElementById('studentDetailsModal')) {
                 document.getElementById('studentDetailsModal').style.display = 'none';
             }
@@ -2694,6 +3409,12 @@
             }
             if (event.target === document.getElementById('titleEditModal')) {
                 document.getElementById('titleEditModal').style.display = 'none';
+            }
+            if (event.target === document.getElementById('randomFullscreen')) {
+                document.getElementById('randomFullscreen').style.display = 'none';
+            }
+            if (event.target === document.getElementById('scoreReasonModal')) {
+                document.getElementById('scoreReasonModal').style.display = 'none';
             }
         });
         
@@ -2710,9 +3431,6 @@
         // 启用加减分功能
         document.getElementById('enableBtn').addEventListener('click', enableScoreFunctions);
         
-        // 手动同步数据
-        document.getElementById('syncBtn').addEventListener('click', syncData);
-
         // 数据导入功能
         document.getElementById('importBtn').addEventListener('click', importData);
 
@@ -2860,7 +3578,7 @@
                 checkbox.className = 'student-checkbox';
                 checkbox.innerHTML = `
                     <input type="checkbox" id="student-${student}" name="students" value="${student}">
-                    <label for="student-${student}">${student}</label>
+                    <label for="student-${student}">${studentNumbers[student]}. ${student}</label>
                 `;
                 container.appendChild(checkbox);
             });
@@ -2900,6 +3618,12 @@
                 lastUpdated: new Date().toISOString()
             };
             
+            // 重新排序并分配学号
+            students.sort((a, b) => a.localeCompare(b, 'zh-CN'));
+            students.forEach((student, index) => {
+                studentNumbers[student] = index + 1;
+            });
+            
             saveData();
             renderStudents();
             renderStudentManagement();
@@ -2920,6 +3644,12 @@
                 students = students.filter(name => !namesToDelete.includes(name));
                 namesToDelete.forEach(name => {
                     delete studentData[name];
+                    delete studentNumbers[name];
+                });
+                
+                // 重新分配学号
+                students.forEach((student, index) => {
+                    studentNumbers[student] = index + 1;
                 });
                 
                 saveData();
@@ -2953,7 +3683,8 @@
         
         // 标题编辑功能
         document.getElementById('editTitleBtn').addEventListener('click', function() {
-            document.getElementById('titleInput').value = document.getElementById('mainTitle').textContent.trim();
+            const title = document.getElementById('mainTitle').textContent.trim().replace(/★/g, '').trim();
+            document.getElementById('titleInput').value = title;
             document.getElementById('titleEditModal').style.display = 'flex';
         });
         
@@ -2964,11 +3695,21 @@
                 return;
             }
             
-            document.getElementById('mainTitle').textContent = newTitle;
+            document.getElementById('mainTitle').innerHTML = `
+                <i class="fas fa-star"></i> ${newTitle} <i class="fas fa-star"></i>
+                <button class="edit-title-btn" id="editTitleBtn"><i class="fas fa-pencil-alt"></i></button>
+            `;
             document.getElementById('mainTitle').style.background = titleColor;
             document.getElementById('titleEditModal').style.display = 'none';
             saveData();
             showNotification('标题已更新');
+            
+            // 重新绑定编辑按钮事件
+            document.getElementById('editTitleBtn').addEventListener('click', function() {
+                const title = document.getElementById('mainTitle').textContent.trim().replace(/★/g, '').trim();
+                document.getElementById('titleInput').value = title;
+                document.getElementById('titleEditModal').style.display = 'flex';
+            });
         });
         
         document.getElementById('cancelTitleEditBtn').addEventListener('click', function() {
@@ -2986,6 +3727,7 @@
                 this.classList.add('selected');
                 titleColor = this.getAttribute('data-color');
                 updateTitleStyle();
+                saveData();
             });
         });
         
@@ -3000,7 +3742,8 @@
                         <button class="edit-title-btn" id="editTitleBtn"><i class="fas fa-pencil-alt"></i></button>
                     `;
                     document.getElementById('editTitleBtn').addEventListener('click', function() {
-                        document.getElementById('titleInput').value = document.getElementById('mainTitle').textContent.trim();
+                        const title = document.getElementById('mainTitle').textContent.trim().replace(/★/g, '').trim();
+                        document.getElementById('titleInput').value = title;
                         document.getElementById('titleEditModal').style.display = 'flex';
                     });
                     saveData();
@@ -3008,6 +3751,9 @@
                 }
             }
         });
+        
+        // 撤销按钮事件
+        document.getElementById('undoBtn').addEventListener('click', undoAction);
         
         // 初始化应用
         function initApp() {
@@ -3025,7 +3771,8 @@
             
             // 标题编辑按钮事件
             document.getElementById('editTitleBtn').addEventListener('click', function() {
-                document.getElementById('titleInput').value = document.getElementById('mainTitle').textContent.trim();
+                const title = document.getElementById('mainTitle').textContent.trim().replace(/★/g, '').trim();
+                document.getElementById('titleInput').value = title;
                 document.getElementById('titleEditModal').style.display = 'flex';
             });
         }
